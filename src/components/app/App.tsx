@@ -1,6 +1,6 @@
-import FormRegistration from './components/formRegistration'
+import FormRegistration from '../formRegistration'
 
-import './index.css'
+import '../../index.css'
 import styles from './App.module.scss'
 
 function App() {
