@@ -38,13 +38,15 @@ function FormRegistration() {
         </div>
         <h2>РЕГИСТРАЦИЯ</h2>
       </div>
-      <div style={{ marginBottom: '16px' }}>
+      <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
         <Controller
           name="username"
           control={control}
           rules={{ required: 'Имя обязательно для заполнения' }}
           render={({ field }) => (
             <Input
+              className={styles.inputField}
+              size="large"
               {...field}
               prefix={<UserOutlined />}
               placeholder="Придумайте имя"
@@ -54,7 +56,7 @@ function FormRegistration() {
         />
         {errors.username && <p style={{ color: 'red', fontSize: '12px', margin: 0 }}>{errors.username.message}</p>}
       </div>
-      <div style={{ marginBottom: '16px' }}>
+      <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
         <Controller
           name="email"
           control={control}
@@ -67,16 +69,19 @@ function FormRegistration() {
           }}
           render={({ field }) => (
             <Input
+              className={styles.inputField}
+              size="large"
               {...field}
               prefix={<MailOutlined />}
               placeholder="Введите почту"
+              type="email"
               status={errors.email ? 'error' : undefined}
             />
           )}
         />
         {errors.email && <p style={{ color: 'red', fontSize: '12px', margin: 0 }}>{errors.email.message}</p>}
       </div>
-      <div style={{ marginBottom: '16px' }}>
+      <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
         <Controller
           name="password"
           control={control}
@@ -89,6 +94,8 @@ function FormRegistration() {
           }}
           render={({ field }) => (
             <Input
+              className={styles.inputField}
+              size="large"
               {...field}
               prefix={<LockOutlined />}
               placeholder="Придумайте пароль"
@@ -98,7 +105,7 @@ function FormRegistration() {
           )}
         />
       </div>
-      <div style={{ marginBottom: '16px' }}>
+      <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
         <Controller
           name="repeatPassword"
           control={control}
@@ -111,6 +118,11 @@ function FormRegistration() {
           }}
           render={({ field }) => (
             <Input
+              className={styles.inputField}
+              style={{
+                backgroundColor: 'rgba(256, 256, 256, 0.1)',
+              }}
+              size="large"
               {...field}
               prefix={<LockOutlined />}
               placeholder="Повторите пароль"
@@ -121,8 +133,8 @@ function FormRegistration() {
         />
         {errors.password && <p style={{ color: 'red', fontSize: '12px', margin: 0 }}>{errors.password.message}</p>}
       </div>
-      <Button type="primary" htmlType="submit" loading={loading}>
-        Отправить
+      <Button style={{ borderRadius: '20px' }} size="large" type="primary" htmlType="submit" loading={loading}>
+        Продолжить
       </Button>
     </form>
   )

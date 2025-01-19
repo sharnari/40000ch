@@ -14,3 +14,30 @@ h2 {
     color: white;
     font-weight: 200;
 }
+
+.inputContainer .inputField {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    background-color: rgba(256, 256, 256, 0.1) !important;
+    color: rgba(255, 255, 255, 1);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.inputField input {
+    background: transparent; /* Фон инпута прозрачный */
+    color: white; /* Текст белого цвета */
+    border: none; /* Убираем рамку у самого инпута */
+    width: 100%; /* Растягиваем инпут */
+    padding: 10px; /* Внутренний отступ */
+}
+
+.inputField input::placeholder {
+    color: white; /* Белый плейсхолдер */
+    font-weight: 100;
+  }
+
+  .inputField input:focus {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 20px;
+    outline: none;
+  }
