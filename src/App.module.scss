@@ -1,0 +1,33 @@
+.containerBGForm {
+    position: relative;
+    display: flex;
+    height: 97vh;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .containerBGForm::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('./assets/zastavki-gas-kvas-com-i08q-p-zastavki-telefon-zima-1.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(10px);
+    z-index: -1;
+  }
+
+  .containerBGForm::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Черный с прозрачностью для затемнения */
+    z-index: -1; /* Находится поверх размытого фона */
+  }
