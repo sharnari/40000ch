@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Input, Button, Divider } from 'antd'
+import InputCustomAnt from '../ui/InputCustomAnt'
 
 import styles from './formLogin.module.scss'
 import logoWhite from '../../assets/logoArmotech-thin4px-white.svg'
@@ -36,6 +37,15 @@ function FormLogin() {
           </div>
           <h2>Вход</h2>
         </div>
+        <InputCustomAnt
+          name="username"
+          control={control}
+          rules={{ required: 'Имя обязательно для заполнения' }}
+          size="large"
+          prefix={<UserOutlined />}
+          placeholder="Ваше имя при регистрации"
+          status={errors.username ? 'error' : undefined}
+        />
         <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
           <Controller
             name="username"
