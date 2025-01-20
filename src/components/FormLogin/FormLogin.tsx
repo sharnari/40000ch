@@ -3,7 +3,7 @@ import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Input, Button, Divider } from 'antd'
 
-import styles from './FormLogin.module.scss'
+import styles from './formLogin.module.scss'
 import logoWhite from '../../assets/logoArmotech-thin4px-white.svg'
 
 interface LoginFormValues {
