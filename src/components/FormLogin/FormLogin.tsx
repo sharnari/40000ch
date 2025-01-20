@@ -1,34 +1,31 @@
 import { useState } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
-import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons'
+import { LockOutlined, UserOutlined } from '@ant-design/icons'
 import { Input, Button, Divider } from 'antd'
 
-import styles from './formRegistration.module.scss'
+import styles from './FormLogin.module.scss'
 import logoWhite from '../../assets/logoArmotech-thin4px-white.svg'
 
-interface RegistrationFormValues {
+interface LoginFormValues {
   username: string
-  email: string
   password: string
-  repeatPassword: string
 }
 
-function FormRegistration() {
+function FormLogin() {
   const [loading, setLoading] = useState(false)
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegistrationFormValues>({ mode: 'onChange' })
+  } = useForm<LoginFormValues>({ mode: 'onChange' })
 
-  const submit: SubmitHandler<RegistrationFormValues> = (data) => {
+  const submit: SubmitHandler<LoginFormValues> = (data) => {
     console.log(data)
     setLoading(true)
     setTimeout(() => {
       setLoading(false)
     }, 2000)
   }
-
   return (
     <div className={styles.pageForm}>
       <form onSubmit={handleSubmit(submit)} className={styles.formRegistration}>
@@ -37,7 +34,7 @@ function FormRegistration() {
           <div style={{ width: '70px' }}>
             <Divider style={{ borderColor: '#ffffff' }}></Divider>
           </div>
-          <h2>РЕГИСТРАЦИЯ</h2>
+          <h2>Вход</h2>
         </div>
         <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
           <Controller
@@ -50,37 +47,12 @@ function FormRegistration() {
                 size="large"
                 {...field}
                 prefix={<UserOutlined />}
-                placeholder="Придумайте имя"
+                placeholder="Ваше имя при регистрации"
                 status={errors.username ? 'error' : undefined}
               />
             )}
           />
           {errors.username && <p style={{ color: 'red', fontSize: '12px', margin: 0 }}>{errors.username.message}</p>}
-        </div>
-        <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
-          <Controller
-            name="email"
-            control={control}
-            rules={{
-              required: 'Почта обязательна для заполнения',
-              pattern: {
-                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                message: 'Введите корректный email',
-              },
-            }}
-            render={({ field }) => (
-              <Input
-                className={styles.inputField}
-                size="large"
-                {...field}
-                prefix={<MailOutlined />}
-                placeholder="Введите почту"
-                type="email"
-                status={errors.email ? 'error' : undefined}
-              />
-            )}
-          />
-          {errors.email && <p style={{ color: 'red', fontSize: '12px', margin: 0 }}>{errors.email.message}</p>}
         </div>
         <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
           <Controller
@@ -99,35 +71,7 @@ function FormRegistration() {
                 size="large"
                 {...field}
                 prefix={<LockOutlined />}
-                placeholder="Придумайте пароль"
-                type="password"
-                status={errors.password ? 'error' : undefined}
-              />
-            )}
-          />
-          {errors.password && <p style={{ color: 'red', fontSize: '12px', margin: 0 }}>{errors.password.message}</p>}
-        </div>
-        <div className={styles.inputContainer} style={{ marginBottom: '16px' }}>
-          <Controller
-            name="repeatPassword"
-            control={control}
-            rules={{
-              required: 'Поле обязательно для регистрации',
-              minLength: {
-                value: 6,
-                message: 'Пароль должен содержать не менее 6 символов',
-              },
-            }}
-            render={({ field }) => (
-              <Input
-                className={styles.inputField}
-                style={{
-                  backgroundColor: 'rgba(256, 256, 256, 0.1)',
-                }}
-                size="large"
-                {...field}
-                prefix={<LockOutlined />}
-                placeholder="Повторите пароль"
+                placeholder="Введите пароль"
                 type="password"
                 status={errors.password ? 'error' : undefined}
               />
@@ -136,14 +80,14 @@ function FormRegistration() {
           {errors.password && <p style={{ color: 'red', fontSize: '12px', margin: 0 }}>{errors.password.message}</p>}
         </div>
         <Button style={{ borderRadius: '20px' }} size="large" type="primary" htmlType="submit" loading={loading}>
-          Продолжить
+          Войти
         </Button>
       </form>
       <p className={styles.loginAncor}>
-        Уже есть аккаунт? <a href="#">Войти</a>
+        Нет Аккаунта? <a href="#">Зарегистрироваться</a>
       </p>
     </div>
   )
 }
 
-export default FormRegistration
+export default FormLogin
