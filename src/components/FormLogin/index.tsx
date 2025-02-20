@@ -1,3 +1,3 @@
-import FormLogin from './formLogin'
+import FormLogin from './FormLogin'
 
 export default FormLogin
