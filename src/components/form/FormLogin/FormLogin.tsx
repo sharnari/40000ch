@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { UserOutlined } from '@ant-design/icons'
+import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { Button, Divider } from 'antd'
-import InputCustomAnt from '../ui/InputCustomAnt'
+import InputCustomAnt from '../../ui/InputCustomAnt'
+import { Link } from 'react-router-dom'
 
 import styles from './formLogin.module.scss'
-import logoWhite from '../../assets/logoArmotech-thin4px-white.svg'
+import logoWhite from '../../../assets/logoArmotech-thin4px-white.svg'
 
 interface LoginFormValues {
   username: string
@@ -35,7 +36,7 @@ function FormLogin() {
           <div style={{ width: '70px' }}>
             <Divider style={{ borderColor: '#ffffff' }}></Divider>
           </div>
-          <h2>Вход</h2>
+          <h2>ВХОД</h2>
         </div>
         <InputCustomAnt
           name="username"
@@ -51,7 +52,7 @@ function FormLogin() {
           control={control}
           rules={{ required: 'Поле обязательно для заполнения' }}
           size="large"
-          prefix={<UserOutlined />}
+          prefix={<LockOutlined />}
           placeholder="Введите пароль"
           status={errors.username ? 'error' : undefined}
         />
@@ -60,7 +61,7 @@ function FormLogin() {
         </Button>
       </form>
       <p className={styles.loginAncor}>
-        Нет Аккаунта? <a href="#">Зарегистрироваться</a>
+        Нет Аккаунта? <Link to="/registration">Зарегистрироваться</Link>
       </p>
     </div>
   )

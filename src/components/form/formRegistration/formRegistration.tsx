@@ -4,7 +4,8 @@ import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons'
 import { Input, Button, Divider } from 'antd'
 
 import styles from './formRegistration.module.scss'
-import logoWhite from '../../assets/logoArmotech-thin4px-white.svg'
+import logoWhite from '../../../assets/logoArmotech-thin4px-white.svg'
+import { Link } from 'react-router-dom'
 
 interface RegistrationFormValues {
   username: string
@@ -112,7 +113,7 @@ function FormRegistration() {
             name="repeatPassword"
             control={control}
             rules={{
-              required: 'Поле обязательно для регистрации',
+              required: 'Поле обязательно для заполнения',
               minLength: {
                 value: 6,
                 message: 'Пароль должен содержать не менее 6 символов',
@@ -121,9 +122,6 @@ function FormRegistration() {
             render={({ field }) => (
               <Input
                 className={styles.inputField}
-                style={{
-                  backgroundColor: 'rgba(256, 256, 256, 0.1)',
-                }}
                 size="large"
                 {...field}
                 prefix={<LockOutlined />}
@@ -140,7 +138,7 @@ function FormRegistration() {
         </Button>
       </form>
       <p className={styles.loginAncor}>
-        Уже есть аккаунт? <a href="#">Войти</a>
+        Уже есть аккаунт? <Link to="/login">Войти</Link>
       </p>
     </div>
   )
